@@ -86,47 +86,50 @@
 
 
   <!-- Projects Section -->
-  <section id="projects" class="projects-section py-5">
-    <div class="container text-center">
-      <h2><span>My</span> Projects</h2>
+<!-- Projects Section -->
+<section id="projects" class="projects-section py-5">
+  <div class="container text-center">
+    <h2><span>My</span> Projects</h2>
 
-      <div class="row justify-content-center mt-4">
-        <!-- Project 1 -->
-        <div class="col-md-4 mb-4">
-          <div class="project-card card p-3">
-            <img src="images/capital-heart.jpg" class="card-img-top" alt="capital-heart App">
-            <div class="card-body">
-              <h4 class="card-title">capital-heart App</h4>
-              <p class="card-text">HTML • CSS • JavaScript • React</p>
-              <a href="https://capital-heart-clinc.vercel.app/" target="_blank" class="btn btn-fill">View Project</a>
-            </div>
+    <div class="row justify-content-center mt-4">
+      <!-- Project 1 -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card card p-3">
+          <img src="images/capital-heart.jpg" class="card-img-top" alt="capital-heart App">
+          <div class="card-body">
+            <h4 class="card-title">capital-heart App</h4>
+            <p class="card-text">HTML • CSS • JavaScript • React</p>
+            <a href="https://capital-heart-clinc.vercel.app/" target="_blank" class="btn btn-fill">View Project</a>
           </div>
         </div>
+      </div>
 
-        <!-- Project 2 -->
-      <div class="col-md-4 mb-4">
-          <div class="project-card card p-3">
-            <img src="images/e-commerce.jpg" class="card-img-top" alt="Weather App">
-            <div class="card-body">
-              <h4 class="card-title">e-commerce</h4>
-              <p class="card-text">HTML • CSS • JavaScript • API • React</p>
-              <a href="https://e-commerce-website-one-puce-86.vercel.app/" target="_blank" class="btn btn-fill">View Project</a>
-            </div>
+      <!-- Project 2 -->
+      <div class="col-md-6 mb-4">
+        <div class="project-card card p-3">
+          <img src="images/e-commerce.jpg" class="card-img-top" alt="E-commerce App">
+          <div class="card-body">
+            <h4 class="card-title">e-commerce</h4>
+            <p class="card-text">HTML • CSS • JavaScript • API • React</p>
+            <a href="https://e-commerce-website-one-puce-86.vercel.app/" target="_blank" class="btn btn-fill">View Project</a>
           </div>
         </div>
+      </div>
 
-        <!-- Project 3 -->
-    <div class="col-md-4 mb-4">
-  <div class="project-card card p-3">
-    <!-- الصورة الرئيسية -->
-    <img src="images/splash.jpeg" class="card-img-top" alt="Eco App" onclick="openGallery('eco')" style="cursor:pointer;">
-    <div class="card-body">
-      <h4 class="card-title">Eco App</h4>
-      <p class="card-text">React Native • Expo • Firebase</p>
+      <!-- Project 3 -->
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="project-card card p-3">
+          <img src="images/splash.jpeg" class="card-img-top" alt="Eco App" onclick="openGallery('eco')" style="cursor:pointer;">
+          <div class="card-body">
+            <h4 class="card-title">Eco App</h4>
+            <p class="card-text">React Native • Expo • Firebase</p>
+            <a href="javascript:void(0)" class="btn btn-fill" onclick="openGallery('eco')">View Screens</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
+</section>
 <!-- المعرض: مخفي افتراضياً -->
 <div id="eco-gallery" class="gallery-overlay" onclick="closeGallery('eco')">
   <div class="gallery-content">
@@ -147,43 +150,46 @@
   display: none;
   position: fixed;
   top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
   overflow: auto;
   z-index: 1000;
-}
-
-.gallery-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
   padding: 20px;
 }
 
+.gallery-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 صور في الصف */
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .gallery-content img {
-  max-width: 200px;
-  cursor: pointer;
-  border: 2px solid white;
+  width: 90%; /* الصورة تظهر بالكامل داخل الكارد */
+  max-width: 80%; /* تصغير حجم الصورة عن كامل مساحة الـ grid cell */
+  height: auto;
   border-radius: 5px;
+  cursor: pointer;
+  object-fit: cover; /* تمنع التشويه */
+  transition: transform 0.3s;
+}
+
+.gallery-content img:hover {
+  transform: scale(1.05); /* effect تكبير عند hover */
 }
 </style>
 
 <script>
 function openGallery(id) {
-  document.getElementById(id + '-gallery').style.display = 'flex';
+  document.getElementById(id + '-gallery').style.display = 'grid';
 }
 
 function closeGallery(id) {
   document.getElementById(id + '-gallery').style.display = 'none';
 }
 </script>
-
-      </div>
-    </div>
-  </section>
-
   <!-- Bottom Navigation -->
   <div class="bottom-nav position-fixed bottom-0 start-50 translate-middle-x mb-3 d-flex gap-3 bg-black p-2 rounded shadow">
     <a href="#home" class="text-dark"><i class="fa-solid fa-house fa-lg"></i></a>
